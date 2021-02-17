@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TechShop.Data.InMemoryDb;
+using TechShop.Domain;
 
 namespace WSF
 {
@@ -26,6 +28,27 @@ namespace WSF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddControllers();
+
+            services.AddSingleton<ICategoriesRepository, InMemoryCategoriesRepository>(sp =>
+            {
+                var categoriesRepo = new InMemoryCategoriesRepository();
+                categoriesRepo.Add(new Categoria(20, "Game")); // categoria di prodotti gestiti dal fornitore
+                return categoriesRepo;
+            });
+
+            services.AddSingleton<IProductsRepository, InMemoryProductsRepository>(sp =>
+            {
+                // aggiunge alcuni prodotti del fornitore
+                var productsRepo = new InMemoryProductsRepository();
+                var categoriesRepo = sp.GetService<ICategoriesRepository>();
+                var networkingCategory = categoriesRepo.GetByDescription("Game").Result;
+                productsRepo.Add(new Prodotto(1, "Playstation", networkingCategory));
+                productsRepo.Add(new Prodotto(2, "XBox", networkingCategory));
+                productsRepo.Add(new Prodotto(3, "Nintendo", networkingCategory));
+                return productsRepo;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

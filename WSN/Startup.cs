@@ -33,13 +33,14 @@ namespace WSN
             services.AddSingleton<ICategoriesRepository, InMemoryCategoriesRepository>(sp =>
             {
                 var categoriesRepo = new InMemoryCategoriesRepository();
-                categoriesRepo.Add(new Categoria(100, "Networking"));
-                categoriesRepo.Add(new Categoria(200, "Game"));
+                categoriesRepo.Add(new Categoria(1, "Networking")); // prodotti presenti nel negozio locale
+                categoriesRepo.Add(new Categoria(20, "Game"));      // prodotti da richiedere al fornitore
                 return categoriesRepo;
             });
 
             services.AddSingleton<IProductsRepository, InMemoryProductsRepository>(sp =>
             {
+                // aggiunge alcuni prodotti nel negozio locale
                 var productsRepo = new InMemoryProductsRepository();
                 var categoriesRepo = sp.GetService<ICategoriesRepository>();
                 var networkingCategory = categoriesRepo.GetByDescription("Networking").Result;
