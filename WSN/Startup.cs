@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using TechShop.Contracts.Data;
 using TechShop.Data.InMemoryDb;
 using TechShop.Domain;
+using TechShop.WS.Commons;
+using WSN.Controllers;
 
 namespace WSN
 {
@@ -52,7 +54,21 @@ namespace WSN
                 productsRepo.Add(switchDevice);
                 return productsRepo;
             });
+
             
+            services.AddSingleton<IProductsRetrieverFactory, ProductsRetrieverCustomFactory>(sp =>
+            {
+                // registra un factory method per definire come verranno ottenuti i prodotti
+                return new ProductsRetrieverCustomFactory(category =>
+                {
+                    if (category.Id <= 10)
+                        return new LocalStoreProductsRetriever(category, sp.GetService<IProductsRepository>());
+                    else
+                        return new RemoteStoreProductsRetriever("https://localhost:44305/", "catalogofornitore", category);
+                });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

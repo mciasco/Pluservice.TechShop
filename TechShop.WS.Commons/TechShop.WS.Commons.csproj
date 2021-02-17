@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,10 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TechShop.Contracts\TechShop.Contracts.csproj" />
-    <ProjectReference Include="..\TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj" />
     <ProjectReference Include="..\TechShop.Domain\TechShop.Domain.csproj" />
-    <ProjectReference Include="..\TechShop.WS.Commons\TechShop.WS.Commons.csproj" />
   </ItemGroup>
-
 
 </Project>

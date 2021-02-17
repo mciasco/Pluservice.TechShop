@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TechShop.Contracts\TechShop.Contracts.csproj" />
     <ProjectReference Include="..\TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj" />
     <ProjectReference Include="..\TechShop.Domain\TechShop.Domain.csproj" />
+    <ProjectReference Include="..\TechShop.WS.Commons\TechShop.WS.Commons.csproj" />
   </ItemGroup>
 
 
