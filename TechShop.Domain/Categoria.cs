@@ -1,8 +1,17 @@
-﻿namespace TechShop.Domain
+﻿using System.Threading.Tasks;
+using TechShop.Contracts.Data;
+using TechShop.Contracts.Entities;
+
+namespace TechShop.Domain
 {
-    public class Categoria
+    public interface ICategoriesRepository : IRepository<Categoria, int>
     {
-        public int Id { get; set; }
+        Task<Categoria> GetByDescription(string description);
+    }
+
+
+    public class Categoria : BaseEntity<int>
+    {
         public string Description { get; set; }
 
         internal Categoria()

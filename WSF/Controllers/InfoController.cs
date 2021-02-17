@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using TechShop.Contracts.Apis;
 using TechShop.Domain;
 
 namespace WSF.Controllers

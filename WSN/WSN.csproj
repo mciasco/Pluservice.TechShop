@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TechShop.Contracts\TechShop.Contracts.csproj" />
+    <ProjectReference Include="..\TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj" />
     <ProjectReference Include="..\TechShop.Domain\TechShop.Domain.csproj" />
   </ItemGroup>
 

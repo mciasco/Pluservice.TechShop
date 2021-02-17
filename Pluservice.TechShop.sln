@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWN.ConsoleClient", "PWN.ConsoleClient\PWN.ConsoleClient.csproj", "{75F1F777-A51F-46DB-A7CD-CCB35303E110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWN.ConsoleClient", "PWN.ConsoleClient\PWN.ConsoleClient.csproj", "{75F1F777-A51F-46DB-A7CD-CCB35303E110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWN.MvcClient", "PWN.MvcClient\PWN.MvcClient.csproj", "{D3B4FE75-D640-4A96-B612-DBDBC552E24B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWN.MvcClient", "PWN.MvcClient\PWN.MvcClient.csproj", "{D3B4FE75-D640-4A96-B612-DBDBC552E24B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSN", "WSN\WSN.csproj", "{AE3E6488-58E1-4B77-925E-CA27452FA840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSN", "WSN\WSN.csproj", "{AE3E6488-58E1-4B77-925E-CA27452FA840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSF", "WSF\WSF.csproj", "{4450E39E-ABD2-4D34-944E-13D6F9FF11D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSF", "WSF\WSF.csproj", "{4450E39E-ABD2-4D34-944E-13D6F9FF11D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.Domain", "TechShop.Domain\TechShop.Domain.csproj", "{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechShop.Domain", "TechShop.Domain\TechShop.Domain.csproj", "{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.Contracts", "TechShop.Contracts\TechShop.Contracts.csproj", "{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.Data.InMemoryDb", "TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj", "{71B46C11-403B-42F3-A793-12443BD76EE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B46C11-403B-42F3-A793-12443BD76EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B46C11-403B-42F3-A793-12443BD76EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B46C11-403B-42F3-A793-12443BD76EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B46C11-403B-42F3-A793-12443BD76EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
