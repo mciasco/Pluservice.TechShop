@@ -45,29 +45,6 @@ namespace WSN.Controllers
                 new ActionResult<IEnumerable<Prodotto>>(
                     Ok(allproducts)));
 
-            //var networkingCategory = new Categoria(1, "Networking");
-
-            //var prodottiNetworking = new List<Prodotto>();
-            //using (var client = new HttpClient())
-            //{
-            //    client.BaseAddress = new Uri("https://localhost:44305/");
-            //    client.DefaultRequestHeaders.Clear();
-            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //    HttpResponseMessage responseProdotti = await client.GetAsync("catalogofornitore");
-
-            //    if (responseProdotti.IsSuccessStatusCode)
-            //    {
-            //        var prodotti = await responseProdotti.Content.ReadAsAsync<IEnumerable<Prodotto>>();
-            //        prodottiNetworking.AddRange(prodotti);
-            //    }
-            //}
-
-            //prodottiNetworking.AddRange(new[] { new Prodotto(1, "Router", networkingCategory), new Prodotto(2, "Range extender", networkingCategory) });
-
-            //return await Task.FromResult(
-            //    new ActionResult<IEnumerable<Prodotto>>(
-            //        Ok(prodottiNetworking)));
         }
     }
 
