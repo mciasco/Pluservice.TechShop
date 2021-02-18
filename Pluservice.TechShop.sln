@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSF", "WSF\WSF.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechShop.Domain", "TechShop.Domain\TechShop.Domain.csproj", "{5AC0C88C-7EC5-41B7-92D4-51AB1FE0B644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.Contracts", "TechShop.Contracts\TechShop.Contracts.csproj", "{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechShop.Contracts", "TechShop.Contracts\TechShop.Contracts.csproj", "{51E5AD6A-D141-49F8-86BA-4D3BC60C5CAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.Data.InMemoryDb", "TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj", "{71B46C11-403B-42F3-A793-12443BD76EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechShop.Data.InMemoryDb", "TechShop.Data.InMemoryDb\TechShop.Data.InMemoryDb.csproj", "{71B46C11-403B-42F3-A793-12443BD76EE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechShop.WS.Commons", "TechShop.WS.Commons\TechShop.WS.Commons.csproj", "{5CB38549-63B5-40F8-94AF-694B4BA97356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechShop.WS.Commons", "TechShop.WS.Commons\TechShop.WS.Commons.csproj", "{5CB38549-63B5-40F8-94AF-694B4BA97356}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C7A3C5EE-DDE1-4174-B242-71E67FAE9CA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

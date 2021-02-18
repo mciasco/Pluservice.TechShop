@@ -42,7 +42,7 @@ namespace TechShop.WS.Commons
         public RemoteStoreProductsRetriever(string remoteApiBaseUrl, string apiControllerName, Categoria category)
         {
             Category = category;
-            _remoteApiBaseUrl = remoteApiBaseUrl;
+            _remoteApiBaseUrl = remoteApiBaseUrl; 
             _apiControllerName = apiControllerName;
 
         }
@@ -57,7 +57,14 @@ namespace TechShop.WS.Commons
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage responseProdotti = await client.GetAsync(_apiControllerName);
+                // aggiunge l'header per la Basic Authentication con un username e password qualunque
+                // lato WSF infatti è registrato un sistema di autenticazione che convalida qualunque username/password
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes("admin:1234")));
+
+                string apiUrl = $"{_apiControllerName}?categoryId={Category.Id}";
+                HttpResponseMessage responseProdotti = await client.GetAsync(apiUrl);
 
                 if (responseProdotti.IsSuccessStatusCode)
                 {

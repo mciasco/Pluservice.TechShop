@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TechShop.Domain;
 using TechShop.WS.Commons;
 
 namespace WSF.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class CatalogoFornitoreController : ControllerBase
@@ -19,14 +21,16 @@ namespace WSF.Controllers
             _categoriesRepository = categoriesRepository;
             _productsRetrieverFactory = productsRetrieverFactory;
         }
-
-
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Prodotto>>> Get()
+        public async Task<ActionResult<IEnumerable<Prodotto>>> Get(string categoryId = "")
         {
             var allproducts = new List<Prodotto>();
 
-            var allCategories = await _categoriesRepository.GetAll();
+            var allCategories = await (string.IsNullOrEmpty(categoryId)
+                ? _categoriesRepository.GetAll()
+                : _categoriesRepository.GetWhere(c => c.Id.ToString().Equals(categoryId)));
+
             foreach (var category in allCategories)
             {
                 var productsRetriever = _productsRetrieverFactory.CreateProductsRetrieverFor(category);

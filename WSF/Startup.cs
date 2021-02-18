@@ -10,9 +10,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
+using Microsoft.AspNetCore.Authentication;
 using TechShop.Data.InMemoryDb;
 using TechShop.Domain;
 using TechShop.WS.Commons;
+using WSF.Authentication;
+using WSF.Handlers;
 
 namespace WSF
 {
@@ -25,12 +29,18 @@ namespace WSF
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            services.AddControllers();
+            services
+                .AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+            // registra un semplice sistema di controllo delle credenziali utente ricevute
+            // che in questo caso convalida qualunque username/password
+            // Un sistema più evoluto si appoggerebbe ad un repository di utenti
+            services.AddScoped<IUserAuthenticatorService, EveryUserAuthenticatorService>();
 
             // registra repository in memory per le categorie
             services.AddSingleton<ICategoriesRepository, InMemoryCategoriesRepository>(sp =>
@@ -61,7 +71,6 @@ namespace WSF
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -70,6 +79,9 @@ namespace WSF
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseRouting();
 
