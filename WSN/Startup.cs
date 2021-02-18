@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using TechShop.Contracts.Data;
 using TechShop.Data.InMemoryDb;
 using TechShop.Domain;
@@ -71,6 +72,8 @@ namespace WSN
             });
 
 
+            // registra un servizio per la gestione custom degli errori della pipeline
+            services.AddTransient<IErrorHandlerService, CustomErrorHandlerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,10 +85,13 @@ namespace WSN
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseAuthorization();
+            // middleware custom per la gestione degli errori
+            // eventualmente combinabile (decorator) con un handler di log che effettua il log con il servizo ILogger
+            // delle eccezioni gestite da questo middleware
+            app.UseErrorHandlerMiddleware();    
+            
 
             app.UseEndpoints(endpoints =>
             {

@@ -69,6 +69,9 @@ namespace WSF
                 return new ProductsRetrieverCustomFactory(category =>
                     new LocalStoreProductsRetriever(category, sp.GetService<IProductsRepository>()));
             });
+
+            // registra un servizio per la gestione custom degli errori della pipeline
+            services.AddTransient<IErrorHandlerService, CustomErrorHandlerService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -79,12 +82,14 @@ namespace WSF
             }
 
             app.UseHttpsRedirection();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             app.UseRouting();
 
+            // middleware custom per la gestione degli errori
+            // eventualmente combinabile (decorator) con un handler di log che effettua il log con il servizo ILogger
+            // delle eccezioni gestite da questo middleware
+            app.UseErrorHandlerMiddleware();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

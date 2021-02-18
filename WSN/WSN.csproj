@@ -15,5 +15,9 @@
     <ProjectReference Include="..\TechShop.WS.Commons\TechShop.WS.Commons.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
 
 </Project>
