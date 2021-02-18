@@ -18,13 +18,11 @@ namespace WSN.Controllers
     public class CatalogoController : ControllerBase
     {
         private readonly ICategoriesRepository _categoriesRepository;
-        private readonly IProductsRepository _productsRepository;
         private readonly IProductsRetrieverFactory _productsRetrieverFactory;
 
-        public CatalogoController(ICategoriesRepository categoriesRepository, IProductsRepository productsRepository, IProductsRetrieverFactory productsRetrieverFactory)
+        public CatalogoController(ICategoriesRepository categoriesRepository, IProductsRetrieverFactory productsRetrieverFactory)
         {
             _categoriesRepository = categoriesRepository;
-            _productsRepository = productsRepository;
             _productsRetrieverFactory = productsRetrieverFactory;
         }
 

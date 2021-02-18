@@ -12,13 +12,11 @@ namespace WSF.Controllers
     public class CatalogoFornitoreController : ControllerBase
     {
         private readonly ICategoriesRepository _categoriesRepository;
-        private readonly IProductsRepository _productsRepository;
         private readonly IProductsRetrieverFactory _productsRetrieverFactory;
 
-        public CatalogoFornitoreController(ICategoriesRepository categoriesRepository, IProductsRepository productsRepository, IProductsRetrieverFactory productsRetrieverFactory)
+        public CatalogoFornitoreController(ICategoriesRepository categoriesRepository, IProductsRetrieverFactory productsRetrieverFactory)
         {
             _categoriesRepository = categoriesRepository;
-            _productsRepository = productsRepository;
             _productsRetrieverFactory = productsRetrieverFactory;
         }
 
