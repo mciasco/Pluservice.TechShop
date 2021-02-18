@@ -31,7 +31,8 @@ namespace WSN
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
+            // registra repository in memory per le categorie
             services.AddSingleton<ICategoriesRepository, InMemoryCategoriesRepository>(sp =>
             {
                 var categoriesRepo = new InMemoryCategoriesRepository();
@@ -40,6 +41,7 @@ namespace WSN
                 return categoriesRepo;
             });
 
+            // registra repository in memory per i prodotti
             services.AddSingleton<IProductsRepository, InMemoryProductsRepository>(sp =>
             {
                 // aggiunge alcuni prodotti nel negozio locale

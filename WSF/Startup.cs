@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TechShop.Data.InMemoryDb;
 using TechShop.Domain;
+using TechShop.WS.Commons;
 
 namespace WSF
 {
@@ -31,23 +32,32 @@ namespace WSF
 
             services.AddControllers();
 
+            // registra repository in memory per le categorie
             services.AddSingleton<ICategoriesRepository, InMemoryCategoriesRepository>(sp =>
             {
                 var categoriesRepo = new InMemoryCategoriesRepository();
                 categoriesRepo.Add(new Categoria(20, "Game")); // categoria di prodotti gestiti dal fornitore
                 return categoriesRepo;
             });
-
+            
+            // registra repository in memory per i prodotti
             services.AddSingleton<IProductsRepository, InMemoryProductsRepository>(sp =>
             {
                 // aggiunge alcuni prodotti del fornitore
                 var productsRepo = new InMemoryProductsRepository();
                 var categoriesRepo = sp.GetService<ICategoriesRepository>();
                 var networkingCategory = categoriesRepo.GetByDescription("Game").Result;
-                productsRepo.Add(new Prodotto(1, "Playstation", networkingCategory));
-                productsRepo.Add(new Prodotto(2, "XBox", networkingCategory));
-                productsRepo.Add(new Prodotto(3, "Nintendo", networkingCategory));
+                productsRepo.Add(new Prodotto(101, "Playstation", networkingCategory));
+                productsRepo.Add(new Prodotto(102, "XBox", networkingCategory));
+                productsRepo.Add(new Prodotto(103, "Nintendo", networkingCategory));
                 return productsRepo;
+            });
+
+            services.AddSingleton<IProductsRetrieverFactory, ProductsRetrieverCustomFactory>(sp =>
+            {
+                // registra una factory per il retriever dei prodotti prelevandoli solo localmente
+                return new ProductsRetrieverCustomFactory(category =>
+                    new LocalStoreProductsRetriever(category, sp.GetService<IProductsRepository>()));
             });
         }
 
