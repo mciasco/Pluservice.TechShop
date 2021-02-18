@@ -66,7 +66,7 @@ namespace WSN
                     if (category.Id <= 10)
                         return new LocalStoreProductsRetriever(category, sp.GetService<IProductsRepository>());
                     else
-                        return new RemoteStoreProductsRetriever("https://localhost:44305/", "catalogofornitore", category);
+                        return new RemoteStoreProductsRetriever("https://localhost:5011/", "catalogofornitore", category);
                 });
             });
 
